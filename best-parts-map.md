@@ -1,0 +1,8 @@
+| Layer | Best LLM | What to Extract |
+|-------|----------|-----------------|
+| **Layer 1 — Data Foundation** | GPT-4o | Every order generates ~50+ discrete events (search → browse → cart → pay → dispatch → deliver). Ingests GPS traces, order history, weather feeds in a hybrid architecture (PostgreSQL + Delta Lake + Redis). |
+| **Layer 2 — Statistical Analysis & Signal Engineering** | Claude Sonnet | Hundreds of engineered features: popularity scores, price sensitivity indices, delivery time variance by zone. Time-series decomposition forecasts demand by micro-zone for partner pre-positioning. |
+| **Layer 3 — Classical / Supervised ML Models** | Claude Sonnet | XGBoost/LightGBM for ETA prediction. Bandit algorithms optimize homepage layout per user in real time. Hardest problem: detecting distribution shift during rain/festivals without downtime. |
+| **Layer 4 — LLM & Generative AI** | GPT-4o | Support bot handles refunds/complaints via RAG over live order state. NLP maps "something spicy under ₹200" to structured menu filters. LLMs are supplementary — not core to ETA or pricing. |
+| **Layer 5 — Deployment & MLOps Infrastructure** | Gemini 1.5 Pro | Models served via Kubernetes with auto-scaling. Shadow scoring runs challenger vs champion models before promotion. Risk: bad ETA model at 8 PM Friday = mass cancellations in minutes. |
+| **Layer 6 — System Design & Scalability** | Claude Sonnet | Dispatch solves VRP for 300,000+ partners in <500ms. Event-driven microservices handle 10–50x traffic spikes on IPL/festive days using circuit breakers and pre-warmed capacity. |
